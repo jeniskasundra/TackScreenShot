@@ -42,4 +42,10 @@ public class Pro {
         this.dis = dis;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
+
 }

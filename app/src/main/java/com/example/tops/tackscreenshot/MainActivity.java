@@ -21,34 +21,43 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     Example example;
     private ArrayList<Pro> mListData;
+    private Spinner spnName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        init();
+        bindView();
+        addListner();
 
-        mListData=new ArrayList<>();
 
-        Log.d("data",""+getJsonString());
-        example= new Gson().fromJson(getJsonString(), Example.class);
+    }
+
+    private void init() {
+        mListData = new ArrayList<>();
+        Log.d("data", "" + getJsonString());
+        example = new Gson().fromJson(getJsonString(), Example.class);
         if (example != null) {
             if (example.getPro().size() > 0) {
-                mListData=example.getPro();
+                mListData = example.getPro();
             }
         }
 
-        for(int i=0;i<mListData.size();i++)
-        {
-            Log.d("listData",mListData.get(i).getName());
+        for (int i = 0; i < mListData.size(); i++) {
+            Log.d("listData", mListData.get(i).getName());
         }
+    }
 
-        Spinner spin = (Spinner) findViewById(R.id.spnName);
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mListData);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
-        spin.setAdapter(aa);
+    private void bindView() {
+        spnName= (Spinner) findViewById(R.id.spnName);
+        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.row_item_spinner, mListData);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnName.setAdapter(adapter);
+    }
 
-
+    private void addListner() {
     }
 
 
