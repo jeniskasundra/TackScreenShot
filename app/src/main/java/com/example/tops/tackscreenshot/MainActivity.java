@@ -3,6 +3,8 @@ package com.example.tops.tackscreenshot;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.google.gson.Gson;
 
@@ -40,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d("listData",mListData.get(i).getName());
         }
 
+        Spinner spin = (Spinner) findViewById(R.id.spnName);
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mListData);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(aa);
+
+
     }
 
 
@@ -63,4 +72,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return writer.toString();
     }
+
+
+    //https://medium.com/@raziaranisandhu/android-xml-view-to-pdf-plus-screenshot-of-full-layout-d2d5b1ff73c4
 }

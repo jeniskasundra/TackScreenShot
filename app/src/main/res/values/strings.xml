@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TackScreenShot</string>
+
+    <string-array name="Weight">
+        <item>Kg</item>
+        <item>Gram</item>
+        <item>Tons</item>
+    </string-array>
 </resources>
